@@ -1,0 +1,21 @@
+<!-- Template shared by new/update/delete forms -->
+<%= form_for @post do |f| %>
+    <% if @post.errors.any? %>
+        <h2><%= pluralize(@post.errors.count, "error") %> prevented this post froms saving</h2>
+        <ul>
+            <%= @post.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    <% end %>
+    <!-- TODO: add css to make div behave like table -->
+    <div>
+        <p> <%= f.label :title %>: <br>
+            <%= f.text_field :title %> </p>
+        <p> <%= f.label :body  %>: <br>
+            <%= f.text_area :body %> </p> 
+    </div>
+    <div>
+        <p><%= f.submit %></p>
+    </div>
+<% end %>
